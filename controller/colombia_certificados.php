@@ -29,7 +29,7 @@ class colombia_certificados extends fs_controller
       parent::__construct(__CLASS__, 'Certificados DIAN', 'contabilidad', FALSE, TRUE);
    }
    
-   protected function process()
+   protected function private_core()
    {
       $this->custom_search = TRUE;
       $this->certificado = new colombia_certificado();
