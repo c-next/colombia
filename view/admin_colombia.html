@@ -4,23 +4,34 @@
    <div class="row">
       <div class="col-sm-12">
          <div class="page-header">
-            <h2>Colombia</h2>
+            <h1>Colombia</h1>
+            <p class="help-block">
+               Este plugin está en desarrollo. Por ahora se ha añadido el <b>Plan contable de Colombia</b>
+               para que puedas importarlo en los ejercicios. Pruébalo ;-)
+            </p>
          </div>
-         <p>
-            Este plugin está en desarrollo. Por ahora se ha añadido el <b>Plan contable de Colombia</b>
-            para que puedas importarlo en los ejercicios. Pruébalo ;-)
-         </p>
       </div>
    </div>
    <div class="row">
       <div class="col-sm-6">
          <a href="{$fsc->url()}&opcion=moneda" class="btn btn-block btn-default">
+            <span class="badge">1</span> &nbsp;
             Establecer COP como moneda por defecto
          </a>
       </div>
       <div class="col-sm-6">
          <a href="{$fsc->url()}&opcion=pais" class="btn btn-block btn-default">
+            <span class="badge">2</span> &nbsp;
             Establecer Colombia como pais por defecto
+         </a>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-12">
+         <br/>
+         <a href="index.php?page=contabilidad_ejercicio&cod={$fsc->empresa->codejercicio}" target="_blank" class="btn btn-sm btn-block btn-default">
+            <span class="badge">3</span> &nbsp;
+            Importar los datos contables
          </a>
       </div>
    </div>
