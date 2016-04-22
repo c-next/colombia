@@ -2,7 +2,7 @@
 
 /*
  * This file is part of FacturaSctipts
- * Copyright (C) 2015  Carlos Garcia Gomez  neorazorx@gmail.com
+ * Copyright (C) 2015-2016  Carlos Garcia Gomez  neorazorx@gmail.com
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -48,6 +48,14 @@ class admin_colombia extends fs_controller
          {
             $this->empresa->codpais = 'COL';
             if( $this->empresa->save() )
+            {
+               $this->new_message('Datos guardados correctamente.');
+            }
+         }
+         else if($_GET['opcion'] == 'regimenes')
+         {
+            $fsvar = new fs_var();
+            if( $fsvar->simple_save('cliente::regimenes_iva', 'Simplificado,Común,Exento') )
             {
                $this->new_message('Datos guardados correctamente.');
             }
