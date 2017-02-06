@@ -197,4 +197,16 @@ class admin_colombia extends fs_controller
          $this->db->exec($sql);
       }
    }
+   
+   public function formato_divisa_ok()
+   {
+      if(FS_POS_DIVISA == 'left')
+      {
+         return TRUE;
+      }
+      else
+      {
+         return FALSE;
+      }
+   }
 }

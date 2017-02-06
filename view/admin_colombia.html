@@ -18,29 +18,43 @@
       </div>
    </div>
    <div class="row">
-      <div class="col-sm-6">
-         {if="$fsc->empresa->coddivisa=='COP'"}
-         <a href="{$fsc->url()}&opcion=moneda" class="btn btn-block btn-success">
-            <span class="glyphicon glyphicon-ok"></span> &nbsp; Establecer COP como moneda por defecto
-         </a>
-         {else}
-         <a href="{$fsc->url()}&opcion=moneda" class="btn btn-block btn-default">
-            <span class="badge">1</span> &nbsp; Establecer COP como moneda por defecto
-         </a>
-         {/if}
-         <br/>
-      </div>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
          {if="$fsc->empresa->codpais=='COL'"}
          <a href="{$fsc->url()}&opcion=pais" class="btn btn-block btn-success">
             <span class="glyphicon glyphicon-ok"></span> &nbsp; Establecer Colombia como pais por defecto
          </a>
          {else}
-         <a href="{$fsc->url()}&opcion=pais" class="btn btn-block btn-default">
-            <span class="badge">2</span> &nbsp; Establecer Colombia como pais por defecto
+         <a href="{$fsc->url()}&opcion=pais" class="btn btn-block btn-warning">
+            <span class="badge">1</span> &nbsp; Establecer Colombia como pais por defecto
          </a>
          {/if}
          <br/>
+      </div>
+      <div class="col-sm-4">
+         {if="$fsc->empresa->coddivisa=='COP'"}
+         <a href="{$fsc->url()}&opcion=moneda" class="btn btn-block btn-success">
+            <span class="glyphicon glyphicon-ok"></span> &nbsp; Establecer COP como moneda por defecto
+         </a>
+         {else}
+         <a href="{$fsc->url()}&opcion=moneda" class="btn btn-block btn-warning">
+            <span class="badge">2</span> &nbsp; Establecer COP como moneda por defecto
+         </a>
+         {/if}
+         <br/>
+      </div>
+      <div class="col-sm-4">
+         {if="$fsc->formato_divisa_ok()"}
+         <a href="index.php?page=admin_home#avanzado" target="_blank" class="btn btn-block btn-success">
+            <span class="glyphicon glyphicon-ok"></span> &nbsp; Formato de moneda: {$fsc->show_precio(1234.56)}
+         </a>
+         {else}
+         <a href="index.php?page=admin_home#avanzado" target="_blank" class="btn btn-block btn-default">
+            <span class="glyphicon glyphicon-wrench"></span>&nbsp; Formato de moneda: {$fsc->show_precio(1234.56)}
+         </a>
+         <p class="help-block">
+            Puedes cambiar la posición del símbolo de la moneda, el separados de millares, etc, desde el panel de control.
+         </p>
+         {/if}
       </div>
    </div>
    <div class="row">
