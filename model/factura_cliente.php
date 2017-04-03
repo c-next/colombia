@@ -44,6 +44,7 @@ class factura_cliente extends FacturaScripts\model\factura_cliente
       $fecha = $this->fecha;
       $hora = $this->hora;
       $sql = "SELECT " . $this->db->sql_to_int('numero') . " as numero,fecha,hora FROM " . $this->table_name
+              . " WHERE codserie = ".$this->var2str($this->codserie)
               . " ORDER BY numero ASC;";
 
       $data = $this->db->select($sql);
@@ -88,7 +89,22 @@ class factura_cliente extends FacturaScripts\model\factura_cliente
          $this->numero = $num;
       }
       
-      /// aca se define la cantidad de ceros antes del número consecutivo en %06s
-      $this->codigo = $this->codserie . sprintf('%06s', $this->numero);
+      if(FS_NEW_CODIGO == 'eneboo')
+      {
+         $this->codigo = $this->codejercicio.sprintf('%02s', $this->codserie).sprintf('%06s', $this->numero);
+      }
+      else if($this->codserie == 'A')
+      {
+         $this->codigo = '00' . sprintf('%06s', $this->numero);
+      }
+      else
+      {
+         $this->codigo = sprintf('%-02s', $this->codserie) . sprintf('%06s', $this->numero);
+      }
+   }
+   
+   public function huecos()
+   {
+      return array();
    }
 }
