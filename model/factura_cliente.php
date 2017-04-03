@@ -44,7 +44,6 @@ class factura_cliente extends FacturaScripts\model\factura_cliente
       $fecha = $this->fecha;
       $hora = $this->hora;
       $sql = "SELECT ".$this->db->sql_to_int('numero')." as numero,fecha,hora FROM ".$this->table_name
-              ." WHERE codserie = ".$this->var2str($this->codserie)
               ." ORDER BY numero ASC;";
       
       $data = $this->db->select($sql);
@@ -89,7 +88,7 @@ class factura_cliente extends FacturaScripts\model\factura_cliente
          $this->numero = $num;
       }
       ///aca se define la cantidad de ceros antes del número consecutivo en %06s
-         $this->codigo = $this->codserie.sprintf('%06s', $this->numero);
+         $this->codigo = sprintf($this->codserie.'%06s', $this->numero);
    }
    
 }
