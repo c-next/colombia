@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of facturacion_base
  * Copyright (C) 2013-2017  Carlos Garcia Gomez  neorazorx@gmail.com
@@ -35,23 +36,22 @@ class factura_cliente extends FacturaScripts\model\factura_cliente
       if($serie)
       {
          /// ¿Se ha definido un nº de factura inicial para esta serie y ejercicio?
-         
-            $num = $serie->numfactura;
+         $num = $serie->numfactura;
       }
-      
+
       /// buscamos un hueco o el siguiente número disponible
       $encontrado = FALSE;
       $fecha = $this->fecha;
       $hora = $this->hora;
-      $sql = "SELECT ".$this->db->sql_to_int('numero')." as numero,fecha,hora FROM ".$this->table_name
-              ." ORDER BY numero ASC;";
-      
+      $sql = "SELECT " . $this->db->sql_to_int('numero') . " as numero,fecha,hora FROM " . $this->table_name
+              . " ORDER BY numero ASC;";
+
       $data = $this->db->select($sql);
       if($data)
       {
          foreach($data as $d)
          {
-            if( intval($d['numero']) < $num )
+            if(intval($d['numero']) < $num)
             {
                /**
                 * El número de la factura es menor que el inicial.
@@ -59,7 +59,7 @@ class factura_cliente extends FacturaScripts\model\factura_cliente
                 * facturas.
                 */
             }
-            else if( intval($d['numero']) == $num )
+            else if(intval($d['numero']) == $num)
             {
                /// el número es correcto, avanzamos
                $num++;
@@ -74,21 +74,21 @@ class factura_cliente extends FacturaScripts\model\factura_cliente
             }
          }
       }
-      
+
       if($encontrado)
       {
-        ///hemos encontrado un hueco
+         ///hemos encontrado un hueco
          $this->numero = $num;
          $this->fecha = $fecha;
          $this->hora = $hora;
       }
       else
       {
-        ///no hemos encontrado un hueco, $num es el siguiente disponible
+         ///no hemos encontrado un hueco, $num es el siguiente disponible
          $this->numero = $num;
       }
-      ///aca se define la cantidad de ceros antes del número consecutivo en %06s
-         $this->codigo = sprintf($this->codserie.'%06s', $this->numero);
+      
+      /// aca se define la cantidad de ceros antes del número consecutivo en %06s
+      $this->codigo = $this->codserie . sprintf('%06s', $this->numero);
    }
-   
 }
